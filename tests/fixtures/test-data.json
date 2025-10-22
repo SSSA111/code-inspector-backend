@@ -1,0 +1,133 @@
+{
+  "validFolderProject": {
+    "name": "Test Folder Project",
+    "type": "folder",
+    "sourceUrl": "/local/path/to/project",
+    "content": "<!doctypehtml><html><head><metacharset='utf-8'><title>ReflectedXSSDemo(VULNERABLE)</title></head><body><h2>Search(vulnerable)</h2><formid='searchForm'><inputid='q'name='q'placeholder='searchterm'><buttontype='submit'>Search</button></form><divid='results'></div><script>//BAD:readinguserinputandinsertingasHTMLwithoutanysanitizationdocument.getElementById('searchForm').addEventListener('submit',function(e){e.preventDefault();constq=document.getElementById('q').value;//vulnerableinsertion:document.getElementById('results').innerHTML='<p>Searchresultsfor:'+q+'</p>'+'<div>Itemsmatching:<ul><li>'+q+'</li></ul></div>';});</script></body></html>",
+    "status": "active"
+  },
+  "invalidProjects": {
+    "emptyName": {
+      "name": "",
+      "type": "github",
+      "sourceUrl": "https://github.com/test/repo"
+    },
+    "invalidType": {
+      "name": "Test Project",
+      "type": "invalid-type",
+      "sourceUrl": "https://github.com/test/repo"
+    },
+    "invalidUrl": {
+      "name": "Test Project",
+      "type": "github",
+      "sourceUrl": "not-a-valid-url"
+    },
+    "missingFields": {
+      "name": "Test Project"
+    }
+  },
+  "githubRepos": {
+    "validPublic": "https://github.com/owner/public-repo",
+    "validPrivate": "https://github.com/owner/private-repo",
+    "withGitExtension": "https://github.com/owner/repo.git",
+    "withTrailingSlash": "https://github.com/owner/repo/",
+    "nonExistent": "https://github.com/nonexistent/repo",
+    "invalidUrls": [
+      "https://example.com/not-github",
+      "not-a-url",
+      "https://github.com/owner",
+      "https://github.com/",
+      "https://github.com/owner/repo/extra/path",
+      "http://github.com/owner/repo"
+    ]
+  },
+  "cloneRequests": {
+    "publicRepo": {
+      "repoUrl": "https://github.com/owner/public-repo",
+      "branch": "main"
+    },
+    "privateRepo": {
+      "repoUrl": "https://github.com/owner/private-repo",
+      "accessToken": "ghp_example_token_123"
+    },
+    "withDevelopBranch": {
+      "repoUrl": "https://github.com/owner/repo",
+      "branch": "develop"
+    },
+    "defaultBranch": {
+      "repoUrl": "https://github.com/owner/repo"
+    }
+  },
+  "analysisRequests": {
+    "valid": {
+      "projectId": "00000000-0000-0000-0000-000000000000"
+    },
+    "invalidProjectId": {
+      "projectId": "invalid-uuid"
+    },
+    "missing": {}
+  },
+  "exportFormats": {
+    "json": "json",
+    "pdf": "pdf",
+    "invalid": "invalid-format"
+  },
+  "expectedLanguages": [
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "Go",
+    "Rust",
+    "SQL",
+    "HTML",
+    "CSS",
+    "JSON",
+    "YAML"
+  ],
+  "expectedCategories": ["web", "backend", "database", "config", "script"],
+  "branchNames": {
+    "valid": [
+      "main",
+      "develop",
+      "feature/new-feature",
+      "hotfix-123",
+      "release/v1.0.0"
+    ]
+  },
+  "validApiKey": {
+    "name": "Test API Key"
+  },
+  "validProject": {
+    "name": "Test Project",
+    "type": "github",
+    "sourceUrl": "https://github.com/test/repo",
+    "content": "<!doctypehtml><html><head><metacharset='utf-8'><title>ReflectedXSSDemo(VULNERABLE)</title></head><body><h2>Search(vulnerable)</h2><formid='searchForm'><inputid='q'name='q'placeholder='searchterm'><buttontype='submit'>Search</button></form><divid='results'></div><script>//BAD:readinguserinputandinsertingasHTMLwithoutanysanitizationdocument.getElementById('searchForm').addEventListener('submit',function(e){e.preventDefault();constq=document.getElementById('q').value;//vulnerableinsertion:document.getElementById('results').innerHTML='<p>Searchresultsfor:'+q+'</p>'+'<div>Itemsmatching:<ul><li>'+q+'</li></ul></div>';});</script></body></html>",
+    "status": "active",
+    "languageStats": "{\"JavaScript\":70,\"HTML\":20,\"CSS\":10}"
+  },
+  "validChatMessage": {
+    "type": "user",
+    "content": "This is a test chat message for testing purposes."
+  },
+  "validAssistantMessage": {
+    "type": "assistant",
+    "content": "This is a test assistant response for testing purposes."
+  },
+  "longChatMessage": {
+    "type": "user",
+    "content": "This is a very long message that would be used to test the maximum content length validation in the chat API endpoints. It needs to be long enough to potentially exceed limits."
+  },
+  "chatMessageWithMetadata": {
+    "type": "user",
+    "content": "Message with metadata for testing",
+    "metadata": "{\"fileReferences\":[\"src/index.js\",\"src/utils.js\"],\"severity\":\"high\"}"
+  },
+  "bulkIssueUpdate": {
+    "issueIds": ["00000000-0000-0000-0000-000000000000"],
+    "resolved": true
+  },
+  "bulkIssueUpdateFalsePositive": {
+    "issueIds": ["00000000-0000-0000-0000-000000000000"],
+    "falsePositive": true
+  }
+}
